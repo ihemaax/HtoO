@@ -201,7 +201,7 @@
     </div>
 </section>
 
-<section class="section">
+<section class="section xp-section">
     <div class="container">
         <div class="section-head">
             <div class="section-kicker">SERVICES</div>
