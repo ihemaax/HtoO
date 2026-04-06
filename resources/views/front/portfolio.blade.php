@@ -8,25 +8,21 @@
             <h1 class="section-title large">{{ __('site.our_works') }}</h1>
             <p class="section-text">
                 {{ app()->getLocale() === 'ar'
-                    ? 'مجموعة من الأعمال التي توضح مستوى الإخراج النهائي والتناسق البصري وجودة التنفيذ.'
-                    : 'A curated selection of projects highlighting clean execution, strong visual balance, and premium final output.' }}
+                    ? 'ده آخر شغل متضاف عندنا. لو عايز نفس الفكرة باسمك أو لوجو شركتك ابعتلنا.'
+                    : 'This is our latest featured work. Contact us to apply your own name or logo.' }}
             </p>
         </div>
 
-        <div class="grid-2">
-            @foreach($works as $work)
-                <div class="card work-card">
-                    <img src="{{ $work['image'] }}" alt="portfolio work">
-                    <div class="work-caption">
-                        <strong>{{ app()->getLocale() === 'ar' ? $work['title_ar'] : $work['title_en'] }}</strong>
-                        <span>
-                            {{ app()->getLocale() === 'ar'
-                                ? 'عناية بالتفاصيل وشكل نهائي يلفت الانتباه.'
-                                : 'Attention to detail with a polished final presentation.' }}
-                        </span>
-                    </div>
-                </div>
-            @endforeach
+        <div class="card work-card" style="padding:0; overflow:hidden;">
+            <img src="https://imgg.io/images/2026/04/06/ebe97d2784bb673a12ca5430b1b354d6.jpg" alt="portfolio work">
+            <div class="work-caption" style="padding:22px 24px;">
+                <strong>{{ app()->getLocale() === 'ar' ? 'نموذج شغل' : 'Featured Work' }}</strong>
+                <span>
+                    {{ app()->getLocale() === 'ar'
+                        ? 'مناسب لشغل الطباعة والإعلانات للشركات والمحلات.'
+                        : 'A sample suited for printing and advertising businesses.' }}
+                </span>
+            </div>
         </div>
     </div>
 </section>
