@@ -1301,11 +1301,11 @@
     <div class="loader-card">
         <div class="loader-ring"></div>
         <div class="loader-title">
-            {{ app()->getLocale() === 'ar' ? 'جارٍ تجهيز التجربة البصرية' : 'Preparing the visual experience' }}
+            {{ app()->getLocale() === 'ar' ? 'ثواني ونفتح الموقع' : 'Opening the website...' }}
         </div>
         <div class="loader-text">
             {{ app()->getLocale() === 'ar'
-                ? 'لحظات قليلة ويتم عرض الواجهة بشكلها الكامل مع الهوية البصرية والتفاصيل التفاعلية.'
+                ? 'بنجهز الصفحة دلوقتي، استنى ثواني بسيطة.'
                 : 'Just a moment while the interface loads with its full visual identity and interactive details.' }}
         </div>
     </div>
@@ -1371,8 +1371,8 @@
 
 <div class="sticky-cta">
     <div class="sticky-cta-copy">
-        <strong>{{ app()->getLocale() === 'ar' ? 'جاهز تحول فكرتك إلى شكل احترافي؟' : 'Ready to turn your idea into a premium visual result?' }}</strong>
-        <span>{{ app()->getLocale() === 'ar' ? 'تواصل معنا مباشرة على واتساب أو شاهد أعمالنا الحالية قبل البدء.' : 'Contact us directly on WhatsApp or review our latest work before getting started.' }}</span>
+        <strong>{{ app()->getLocale() === 'ar' ? 'عندك فكرة وعايز تنفذها؟' : 'Have an idea and want to execute it?' }}</strong>
+        <span>{{ app()->getLocale() === 'ar' ? 'كلمنا على واتساب أو شوف شغلنا الحالي الأول.' : 'Chat on WhatsApp or check our current work first.' }}</span>
     </div>
 
     <div class="sticky-cta-actions">
@@ -1380,7 +1380,7 @@
             {{ app()->getLocale() === 'ar' ? 'شاهد الأعمال' : 'View Portfolio' }}
         </a>
         <a href="https://wa.me/{{ $whatsappNumber }}" target="_blank" class="btn btn-primary">
-            {{ app()->getLocale() === 'ar' ? 'تواصل عبر واتساب' : 'Chat on WhatsApp' }}
+            {{ app()->getLocale() === 'ar' ? 'راسلنا واتساب' : 'Chat on WhatsApp' }}
         </a>
     </div>
 </div>

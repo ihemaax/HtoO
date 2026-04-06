@@ -8,8 +8,8 @@
             <h1 class="section-title large">{{ __('site.our_services') }}</h1>
             <p class="section-text">
                 {{ app()->getLocale() === 'ar'
-                    ? 'خدمات احترافية في الطباعة والتصميم والدعاية، مصممة لتناسب الشركات والأفراد الباحثين عن شكل قوي وتنفيذ نظيف.'
-                    : 'Professional printing, branding, and design services tailored for businesses and individuals seeking strong aesthetics and premium execution.' }}
+                    ? 'بنقدم خدمات طباعة وتصميم ودعاية بشكل عملي. تختار الخدمة اللي محتاجها ونتفق على التفاصيل قبل التنفيذ.'
+                    : 'We provide practical printing, design, and advertising services with clear steps before production.' }}
             </p>
         </div>
 

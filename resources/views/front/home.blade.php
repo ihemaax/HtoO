@@ -2,187 +2,198 @@
 
 @section('content')
 <style>
-    .neo-hero{
-        position: relative;
-        padding: 88px 0 54px;
-        overflow: clip;
-    }
+    .home-simple-hero{padding:84px 0 48px}
+    .home-simple-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+    .home-simple-card{padding:38px;border-radius:32px}
+    .home-simple-title{font-size:clamp(34px,4.8vw,60px);line-height:1.08;margin-bottom:14px;letter-spacing:-1px}
+    .home-simple-title span{display:block;color:var(--primary)}
+    .home-simple-text{color:var(--muted);font-size:17px;line-height:1.95;max-width:720px}
 
-    .neo-hero::before,
-    .neo-hero::after{
-        content: "";
-        position: absolute;
-        width: 42vw;
-        height: 42vw;
-        border-radius: 50%;
-        filter: blur(34px);
-        z-index: 0;
-        opacity: .45;
-        pointer-events: none;
-    }
+    .quick-points{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+    .quick-point{padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03);font-size:14px;font-weight:700}
 
-    .neo-hero::before{
-        background: radial-gradient(circle, rgba(122,229,239,.42), transparent 62%);
-        top: -18vw;
-        inset-inline-end: -12vw;
-        animation: orbFloat 12s ease-in-out infinite;
-    }
-
-    .neo-hero::after{
-        background: radial-gradient(circle, rgba(94,120,255,.35), transparent 64%);
-        bottom: -18vw;
-        inset-inline-start: -12vw;
-        animation: orbFloat 14s ease-in-out infinite reverse;
-    }
-
-    .neo-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;position:relative;z-index:1}
-
-    .neo-intro{padding:42px;border-radius:34px;position:relative;overflow:hidden}
-
-    .neo-intro::after{
-        content:"";
-        position:absolute;
-        inset:0;
-        background:
-            linear-gradient(115deg, rgba(255,255,255,.08), transparent 30%),
-            radial-gradient(circle at 75% 32%, rgba(122,229,239,.18), transparent 45%);
-        pointer-events:none;
-    }
-
-    .neo-title{font-size:clamp(38px,5vw,72px);line-height:1.02;font-weight:900;letter-spacing:-1.4px;margin-bottom:14px}
-    .neo-title span{
-        display:block;
-        background:linear-gradient(90deg,#ffffff 0%, #7ae5ef 45%, #9aa9ff 100%);
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-        background-clip:text;
-    }
-
-    .neo-sub{font-size:18px;line-height:1.95;color:var(--muted);max-width:760px;margin-bottom:24px}
-
-    .creative-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
-    .creative-badge{
-        min-height:40px;padding:0 14px;border-radius:999px;font-size:12px;font-weight:900;
-        display:inline-flex;align-items:center;background:rgba(122,229,239,.1);border:1px solid var(--line);
-    }
-
-    .scene-card{padding:24px;border-radius:34px;position:relative;overflow:hidden;min-height:460px}
-    .scene-canvas{position:absolute;inset:0;display:grid;place-items:center}
-
-    .ring{position:absolute;border-radius:50%;border:1px solid rgba(122,229,239,.22);animation:ringPulse 5s linear infinite}
-    .ring.r1{width:190px;height:190px}
-    .ring.r2{width:280px;height:280px;animation-delay:1s}
-    .ring.r3{width:370px;height:370px;animation-delay:2s}
-
-    .ad-cube{
-        width:min(310px,84%);aspect-ratio:1/1;position:relative;transform-style:preserve-3d;
-        animation:cubeSpin 14s linear infinite;
-    }
-
-    .face{
-        position:absolute;inset:0;border-radius:24px;padding:22px;
-        background:linear-gradient(145deg, rgba(14,36,50,.95), rgba(7,18,26,.9));
-        border:1px solid rgba(122,229,239,.25);
-        box-shadow:0 25px 55px rgba(0,0,0,.28);
-        display:flex;flex-direction:column;justify-content:space-between;
-    }
-
-    .face h4{font-size:22px;font-weight:900}
-    .face p{font-size:14px;line-height:1.8;color:var(--muted)}
-    .face .tag{font-size:12px;color:var(--primary);font-weight:800}
-
-    .face.one{transform:translateZ(120px)}
-    .face.two{transform:rotateY(90deg) translateZ(120px)}
-    .face.three{transform:rotateY(180deg) translateZ(120px)}
-    .face.four{transform:rotateY(-90deg) translateZ(120px)}
-
-    .xp-section{padding-top:26px}
-    .xp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-
-    .xp-item{padding:24px;border-radius:24px;position:relative;overflow:hidden}
-    .xp-item::before{content:"";position:absolute;inset-inline-start:-36%;top:-40%;width:70%;height:180%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);transform:rotate(20deg);animation:sweep 5.5s linear infinite}
-    .xp-item h3{font-size:22px;margin-bottom:9px}
-    .xp-item p{color:var(--muted);line-height:1.9;font-size:15px}
-
-    .process-track{margin-top:18px;display:grid;gap:14px}
-    .process-step{padding:18px 20px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid var(--line);display:flex;align-items:center;gap:14px}
-    .step-no{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),#8db9ff);color:#071018;font-weight:900;flex-shrink:0}
-
-    .portfolio-single{margin-top:16px;position:relative;overflow:hidden;border-radius:28px;border:1px solid var(--line);box-shadow:var(--shadow)}
-    .portfolio-single img{width:100%;height:420px;object-fit:cover;transform:scale(1.03);transition:transform .6s ease}
-    .portfolio-single:hover img{transform:scale(1.08)}
-
-    @keyframes cubeSpin{from{transform:rotateX(-12deg) rotateY(0deg)}to{transform:rotateX(-12deg) rotateY(360deg)}}
-    @keyframes ringPulse{0%{opacity:.35;transform:scale(.94)}50%{opacity:.7;transform:scale(1.02)}100%{opacity:.35;transform:scale(.94)}}
-    @keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
-    @keyframes sweep{0%{transform:translateX(-210%) rotate(20deg)}100%{transform:translateX(310%) rotate(20deg)}}
+    .widget-title{margin-bottom:10px}
+    .widget-note{color:var(--muted);font-size:14px;line-height:1.9;margin-bottom:14px}
 
     @media (max-width: 992px){
-        .neo-grid,.xp-grid{grid-template-columns:1fr}
-        .scene-card{min-height:390px}
-        .portfolio-single img{height:300px}
+        .home-simple-grid,.quick-points{grid-template-columns:1fr}
+        .home-simple-card{padding:24px}
     }
 </style>
 
-<section class="neo-hero">
-    <div class="container neo-grid">
-        <div class="glass neo-intro">
-            <div class="eyebrow">{{ app()->getLocale() === 'ar' ? 'هوية بصرية خارقة · طباعة · إعلانات' : 'Immersive Branding · Printing · Advertising' }}</div>
-
-            <h1 class="neo-title">
+<section class="home-simple-hero">
+    <div class="container home-simple-grid">
+        <div class="glass home-simple-card">
+            <div class="eyebrow">{{ app()->getLocale() === 'ar' ? 'شركة طباعة وإعلانات' : 'Printing & Advertising Company' }}</div>
+            <h1 class="home-simple-title">
                 @if(app()->getLocale() === 'ar')
-                    نعيد تعريف شكل
-                    <span>مواقع الطباعة والإعلان</span>
+                    بنقدّم طباعة وتصميم
+                    <span>بشكل واضح ومنظم</span>
                 @else
-                    We redefine how
-                    <span>printing & advertising websites feel</span>
+                    We provide printing and design
+                    <span>with clear and organized execution</span>
                 @endif
             </h1>
 
-            <p class="neo-sub">
+            <p class="home-simple-text">
                 {{ app()->getLocale() === 'ar'
-                    ? 'تجربة بصرية جريئة، حركة ديناميكية، وهوية تصميمية تبهر العميل من أول ثانية. بنبني حضور رقمي يجعل علامتك تبدو أقوى، أكثر فخامة، وأكثر إقناعًا.'
-                    : 'A bold visual experience with kinetic motion and a premium design language that impresses from the first second and elevates your brand perception.' }}
+                    ? 'لو محتاج كروت، مجات، بادة ماوس، تيشيرتات، أو مطبوعات للدعاية، احنا بنساعدك من أول الفكرة لحد التسليم. الشغل بيكون واضح، المواعيد محددة، والتواصل مباشر.'
+                    : 'If you need cards, mugs, mouse pads, T-shirts, or promo prints, we handle it from idea to delivery with clear communication and fixed timelines.' }}
             </p>
 
-            <div class="creative-badges">
-                <span class="creative-badge">{{ app()->getLocale() === 'ar' ? '3D Motion UI' : '3D Motion UI' }}</span>
-                <span class="creative-badge">{{ app()->getLocale() === 'ar' ? 'تفاعل حي' : 'Live Interaction' }}</span>
-                <span class="creative-badge">{{ app()->getLocale() === 'ar' ? 'تأثيرات إبهار' : 'Wow Effects' }}</span>
-            </div>
-
-            <div class="hero-actions">
-                <a href="{{ route('contact') }}" class="btn btn-primary">{{ app()->getLocale() === 'ar' ? 'ابدأ مشروعك الآن' : 'Start Your Project' }}</a>
-                <a href="{{ route('portfolio') }}" class="btn btn-outline">{{ app()->getLocale() === 'ar' ? 'شاهد البورتفليو' : 'View Portfolio' }}</a>
+            <div class="hero-actions" style="margin-top:20px;">
+                <a href="{{ route('contact') }}" class="btn btn-primary">{{ app()->getLocale() === 'ar' ? 'اطلب شغلك دلوقتي' : 'Start Your Order' }}</a>
+                <a href="{{ route('portfolio') }}" class="btn btn-outline">{{ app()->getLocale() === 'ar' ? 'شوف آخر شغل' : 'See Latest Work' }}</a>
             </div>
         </div>
 
-        <div class="glass scene-card">
-            <div class="scene-canvas">
-                <div class="ring r1"></div>
-                <div class="ring r2"></div>
-                <div class="ring r3"></div>
+        <div class="glass home-simple-card">
+            <h2 class="section-title" style="font-size:30px;">{{ app()->getLocale() === 'ar' ? 'ليه ناس كتير بتتعامل معانا؟' : 'Why clients work with us' }}</h2>
+            <p class="home-simple-text" style="font-size:15px;">
+                {{ app()->getLocale() === 'ar'
+                    ? 'عشان بنشتغل بخطة بسيطة: نفهم المطلوب، نعرض شكل مناسب، وننفذ بخامة كويسة. من غير لف ودوران.'
+                    : 'Our flow is simple: understand the requirement, present the right design, and produce with quality materials.' }}
+            </p>
 
-                <div class="ad-cube" aria-hidden="true">
-                    <div class="face one">
-                        <span class="tag">PRINT IMPACT</span>
-                        <h4>{{ app()->getLocale() === 'ar' ? 'حملات مطبوعة' : 'Print Campaigns' }}</h4>
-                        <p>{{ app()->getLocale() === 'ar' ? 'تصميم وتنفيذ بخامة تعكس قيمة البراند.' : 'Design + production with premium finishing.' }}</p>
+            <div class="quick-points">
+                <div class="quick-point">{{ app()->getLocale() === 'ar' ? 'معاينة قبل التنفيذ' : 'Preview before production' }}</div>
+                <div class="quick-point">{{ app()->getLocale() === 'ar' ? 'تعديل حسب الملاحظات' : 'Adjustments based on feedback' }}</div>
+                <div class="quick-point">{{ app()->getLocale() === 'ar' ? 'خامات مناسبة للسوق المصري' : 'Materials that fit local market needs' }}</div>
+                <div class="quick-point">{{ app()->getLocale() === 'ar' ? 'تسليم في الوقت المتفق عليه' : 'On-time delivery' }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="printerWidgetSection">
+    <div class="container">
+        <div class="creative-lab">
+            <div class="creative-panel">
+                <div class="section-kicker">LIVE PREVIEW WIDGET</div>
+                <h2 class="section-title widget-title">
+                    {{ app()->getLocale() === 'ar' ? 'اكتب الاسم وشوف شكله على المنتج قبل ما تطلب' : 'Type a name and preview it on products' }}
+                </h2>
+                <p class="widget-note">
+                    {{ app()->getLocale() === 'ar'
+                        ? 'اختار المنتج، اكتب الاسم، واضغط طباعة. هتشوف المعاينة على تيشيرت أو كوب أو كارت أو بادة ماوس. ده بيساعدك تختار الشكل المناسب بسرعة.'
+                        : 'Choose a product, type a name, and press print. You will preview it on a T-shirt, mug, card, or mouse pad.' }}
+                </p>
+
+                <div class="mockup-tabs">
+                    <button class="mockup-tab active" type="button" data-mockup="tshirt">{{ app()->getLocale() === 'ar' ? 'تيشيرت' : 'T-shirt' }}</button>
+                    <button class="mockup-tab" type="button" data-mockup="mug">{{ app()->getLocale() === 'ar' ? 'كوب' : 'Mug' }}</button>
+                    <button class="mockup-tab" type="button" data-mockup="card">{{ app()->getLocale() === 'ar' ? 'كارت شخصي' : 'Business Card' }}</button>
+                    <button class="mockup-tab" type="button" data-mockup="pad">{{ app()->getLocale() === 'ar' ? 'بادة ماوس' : 'Mouse Pad' }}</button>
+                </div>
+
+                <div class="creative-form">
+                    <input id="mockupNameInput" class="creative-input" type="text" maxlength="22"
+                           placeholder="{{ app()->getLocale() === 'ar' ? 'اكتب اسمك هنا' : 'Type your name here' }}">
+
+                    <div class="color-picker">
+                        <button type="button" class="color-chip active" data-color="#d6f1fb" data-color2="#ffffff" style="background:linear-gradient(135deg,#ffffff,#d6f1fb)"></button>
+                        <button type="button" class="color-chip" data-color="#1a1d24" data-color2="#414752" style="background:linear-gradient(135deg,#0f1014,#474d58)"></button>
+                        <button type="button" class="color-chip" data-color="#12375c" data-color2="#3f7cb3" style="background:linear-gradient(135deg,#12375c,#3f7cb3)"></button>
+                        <button type="button" class="color-chip" data-color="#6e1730" data-color2="#c53a63" style="background:linear-gradient(135deg,#6e1730,#c53a63)"></button>
                     </div>
-                    <div class="face two">
-                        <span class="tag">VISUAL IDENTITY</span>
-                        <h4>{{ app()->getLocale() === 'ar' ? 'هوية متكاملة' : 'Full Branding' }}</h4>
-                        <p>{{ app()->getLocale() === 'ar' ? 'لغة بصرية مميزة لا تُنسى.' : 'A memorable, signature visual language.' }}</p>
+
+                    <button id="printMockupBtn" class="btn btn-primary" type="button">
+                        {{ app()->getLocale() === 'ar' ? 'طباعة المعاينة' : 'Print Preview' }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="creative-panel mockup-stage">
+                <div class="mockup-printer-wrap">
+                    <div class="mockup-printer">
+                        <div class="mockup-printer-head"></div>
+                        <div class="mockup-printer-body"><div class="mockup-printer-slot"></div></div>
                     </div>
-                    <div class="face three">
-                        <span class="tag">STORE PRESENCE</span>
-                        <h4>{{ app()->getLocale() === 'ar' ? 'لافتات وإعلانات' : 'Signage & Ads' }}</h4>
-                        <p>{{ app()->getLocale() === 'ar' ? 'حلول تشد العين وتدفع العميل للشراء.' : 'Eye-catching executions that drive conversion.' }}</p>
+
+                    <div class="print-sheet" id="printSheet"></div>
+
+                    <div class="mockup-view tshirt-preview show" id="tshirtPreview">
+                        <svg class="svg-mockup" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="shirtGrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="var(--mockup-alt)"/>
+                                    <stop offset="100%" stop-color="var(--mockup-main)"/>
+                                </linearGradient>
+                                <linearGradient id="printGrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#0a1722"/>
+                                    <stop offset="100%" stop-color="#2e8db0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M95 40 L130 40 L145 62 L195 62 L210 40 L245 40 L290 88 L258 112 L242 88 L242 254 L98 254 L98 88 L82 112 L50 88 Z"
+                                  fill="url(#shirtGrad)" stroke="rgba(255,255,255,.45)" stroke-width="2" data-mockup-color-target />
+                            <path d="M142 40 Q170 74 198 40" fill="none" stroke="#c6dce5" stroke-width="12" stroke-linecap="round"/>
+                            <rect x="92" y="102" width="156" height="86" rx="22" fill="url(#printGrad)"/>
+                            <text id="tshirtDesignText" x="170" y="151" text-anchor="middle" dominant-baseline="middle" class="svg-design-text" font-size="26" fill="#ffffff">H TO O</text>
+                        </svg>
+                        <div class="mockup-caption">{{ app()->getLocale() === 'ar' ? 'معاينة تيشيرت بالاسم' : 'T-shirt preview' }}</div>
                     </div>
-                    <div class="face four">
-                        <span class="tag">WOW EXPERIENCE</span>
-                        <h4>{{ app()->getLocale() === 'ar' ? 'تجربة تبهر' : 'Stunning Experience' }}</h4>
-                        <p>{{ app()->getLocale() === 'ar' ? 'ديزاين مختلف يفضل في ذاكرة كل زائر.' : 'A unique design that stays in memory.' }}</p>
+
+                    <div class="mockup-view mug-preview" id="mugPreview">
+                        <svg class="svg-mockup" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="mugGrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="var(--mockup-alt)"/>
+                                    <stop offset="100%" stop-color="var(--mockup-main)"/>
+                                </linearGradient>
+                                <linearGradient id="mugPrintGrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#0a1722"/>
+                                    <stop offset="100%" stop-color="#2e8db0"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="70" y="58" width="150" height="120" rx="20" fill="url(#mugGrad)" stroke="rgba(255,255,255,.48)" stroke-width="2" data-mockup-color-target />
+                            <path d="M220 88 Q258 90 258 118 Q258 146 220 148" fill="none" stroke="url(#mugGrad)" stroke-width="18" stroke-linecap="round"/>
+                            <rect x="90" y="80" width="108" height="74" rx="16" fill="url(#mugPrintGrad)"/>
+                            <text id="mugDesignText" x="144" y="118" text-anchor="middle" dominant-baseline="middle" class="svg-design-text" font-size="22" fill="#ffffff">H TO O</text>
+                        </svg>
+                        <div class="mockup-caption">{{ app()->getLocale() === 'ar' ? 'معاينة كوب بالاسم' : 'Mug preview' }}</div>
+                    </div>
+
+                    <div class="mockup-view card-preview" id="businessCardPreview">
+                        <svg class="svg-mockup" viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#102130"/>
+                                    <stop offset="58%" stop-color="var(--mockup-dark)"/>
+                                    <stop offset="100%" stop-color="#295f7c"/>
+                                </linearGradient>
+                                <linearGradient id="cardAccent" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="var(--mockup-alt)"/>
+                                    <stop offset="100%" stop-color="var(--mockup-main)"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="52" y="46" width="236" height="146" rx="24" fill="url(#cardBg)" stroke="rgba(122,229,239,.18)" stroke-width="2"/>
+                            <rect x="72" y="74" width="126" height="46" rx="16" fill="url(#cardAccent)" opacity=".22"/>
+                            <text id="cardDesignText" x="82" y="102" class="svg-design-text" font-size="26" fill="#ffffff">H TO O</text>
+                            <text x="82" y="148" font-size="12" fill="rgba(255,255,255,.68)" font-family="Outfit, Alexandria, sans-serif">BUSINESS CARD</text>
+                        </svg>
+                        <div class="mockup-caption">{{ app()->getLocale() === 'ar' ? 'معاينة كارت شخصي بالاسم' : 'Card preview' }}</div>
+                    </div>
+
+                    <div class="mockup-view pad-preview" id="mousePadPreview">
+                        <svg class="svg-mockup" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="padBg" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#0a161f"/>
+                                    <stop offset="100%" stop-color="#17384b"/>
+                                </linearGradient>
+                                <linearGradient id="padAccent" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="var(--mockup-alt)"/>
+                                    <stop offset="100%" stop-color="var(--mockup-main)"/>
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(42,30) skewX(-18)">
+                                <rect x="40" y="56" width="220" height="116" rx="26" fill="url(#padBg)" stroke="rgba(122,229,239,.14)" stroke-width="2"/>
+                                <rect x="58" y="74" width="184" height="80" rx="20" fill="url(#padAccent)" opacity=".22"/>
+                                <rect x="64" y="80" width="172" height="68" rx="18" fill="rgba(7,16,24,.72)"/>
+                                <text id="padDesignText" x="150" y="121" text-anchor="middle" dominant-baseline="middle" class="svg-design-text" font-size="24" fill="#ffffff">H TO O</text>
+                            </g>
+                        </svg>
+                        <div class="mockup-caption">{{ app()->getLocale() === 'ar' ? 'معاينة بادة ماوس بالاسم' : 'Mouse pad preview' }}</div>
                     </div>
                 </div>
             </div>
@@ -193,50 +204,18 @@
 <section class="section xp-section">
     <div class="container">
         <div class="section-head">
-            <div class="section-kicker">NEXT LEVEL EXPERIENCE</div>
-            <h2 class="section-title large">
-                {{ app()->getLocale() === 'ar' ? 'حاجات كريتيف تلفت العين وتشد العملاء' : 'Creative experiences that capture attention and convert' }}
-            </h2>
+            <div class="section-kicker">SERVICES</div>
+            <h2 class="section-title">{{ app()->getLocale() === 'ar' ? 'الخدمات اللي بنقدمها' : 'Our Services' }}</h2>
+            <p class="section-text">{{ app()->getLocale() === 'ar' ? 'خدمات مناسبة للشركات والمحلات والمشاريع الجديدة.' : 'Services for businesses, stores, and startups.' }}</p>
         </div>
-
-        <div class="xp-grid">
-            <article class="glass xp-item">
-                <h3>{{ app()->getLocale() === 'ar' ? 'أنيميشن سينمائي' : 'Cinematic Motion' }}</h3>
-                <p>{{ app()->getLocale() === 'ar' ? 'حركة سلسة بتدي عمق للمحتوى وتخلي التفاعل ممتع ومبهر.' : 'Smooth motion adds depth and premium interaction.' }}</p>
-            </article>
-            <article class="glass xp-item">
-                <h3>{{ app()->getLocale() === 'ar' ? 'هوية متطورة' : 'Advanced Identity' }}</h3>
-                <p>{{ app()->getLocale() === 'ar' ? 'ألوان، إضاءة، وخطوط تعبر عن شخصية قوية لشركة طباعة وإعلانات.' : 'Color, glow, and typography tuned for a printing/advertising brand.' }}</p>
-            </article>
-            <article class="glass xp-item">
-                <h3>{{ app()->getLocale() === 'ar' ? 'تصميم يبيع' : 'Design That Sells' }}</h3>
-                <p>{{ app()->getLocale() === 'ar' ? 'كل بلوك مصمم عشان يزود الثقة ويقرب العميل من خطوة التواصل.' : 'Every block is crafted to build trust and trigger action.' }}</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <div class="creative-lab">
-            <div class="glass creative-panel">
-                <div class="section-kicker">WORKFLOW</div>
-                <h2 class="section-title">{{ app()->getLocale() === 'ar' ? 'رحلة تنفيذ سريعة واحترافية' : 'A fast, premium delivery workflow' }}</h2>
-
-                <div class="process-track">
-                    <div class="process-step"><div class="step-no">1</div><p>{{ app()->getLocale() === 'ar' ? 'استلام الفكرة وتحويلها كونسبت بصري.' : 'Brief intake and concept translation.' }}</p></div>
-                    <div class="process-step"><div class="step-no">2</div><p>{{ app()->getLocale() === 'ar' ? 'تصميمات إبداعية متعددة لاختيار الأفضل.' : 'Multiple creative directions to pick from.' }}</p></div>
-                    <div class="process-step"><div class="step-no">3</div><p>{{ app()->getLocale() === 'ar' ? 'تنفيذ وطباعة نهائية بأعلى جودة.' : 'High-end production and print execution.' }}</p></div>
+        <div class="grid-3">
+            @foreach(array_slice($services, 0, 6) as $service)
+                <div class="card">
+                    <div class="service-icon">{{ $service['icon'] }}</div>
+                    <h3>{{ app()->getLocale() === 'ar' ? $service['title_ar'] : $service['title_en'] }}</h3>
+                    <p>{{ app()->getLocale() === 'ar' ? $service['desc_ar'] : $service['desc_en'] }}</p>
                 </div>
-            </div>
-
-            <div class="glass creative-panel">
-                <div class="section-kicker">FEATURED PORTFOLIO</div>
-                <h2 class="section-title">{{ app()->getLocale() === 'ar' ? 'العمل المميز الحالي' : 'Current Featured Work' }}</h2>
-                <div class="portfolio-single">
-                    <img src="https://imgg.io/images/2026/04/06/ebe97d2784bb673a12ca5430b1b354d6.jpg" alt="featured portfolio work">
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
