@@ -15,14 +15,9 @@ class HomeController extends Controller
             'logoUrl' => 'https://imgg.io/images/2026/04/05/68f1178fd72091a534dacdea6f2b7509.jpg',
             'works' => [
                 [
-                    'image' => 'https://imgg.io/images/2026/04/05/bf359d71e1e094089907e29fbc680927.jpg',
-                    'title_ar' => 'عمل دعائي مميز',
-                    'title_en' => 'Featured Branding Work',
-                ],
-                [
-                    'image' => 'https://imgg.io/images/2026/04/05/fd36aa52bcbc9b4400bba91df6c46ac6.jpg',
-                    'title_ar' => 'تنفيذ احترافي',
-                    'title_en' => 'Professional Production',
+                    'image' => 'https://imgg.io/images/2026/04/06/ebe97d2784bb673a12ca5430b1b354d6.jpg',
+                    'title_ar' => 'نموذج أعمال مميز',
+                    'title_en' => 'Featured Creative Work',
                 ],
             ],
             'services' => [
