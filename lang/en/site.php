@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'site_name' => 'H to O Advertising & Design',
+    'home' => 'Home',
+    'about' => 'About',
+    'services' => 'Services',
+    'portfolio' => 'Portfolio',
+    'contact' => 'Contact',
+    'hero_title' => 'Professional Printing & Branding Solutions',
+    'hero_subtitle' => 'We provide premium printing, advertising, and creative design services with a modern visual identity for individuals and businesses.',
+    'discover_services' => 'Explore Services',
+    'view_portfolio' => 'View Portfolio',
+    'about_title' => 'About Us',
+    'about_text' => 'We are a professional printing, branding, and design office focused on delivering visually polished work with strong identity and premium execution.',
+    'why_us' => 'Why Us',
+    'why_1' => 'Premium-quality execution',
+    'why_2' => 'Professional design direction',
+    'why_3' => 'Reliable delivery',
+    'why_4' => 'Suitable for businesses and individuals',
+    'our_services' => 'Our Services',
+    'our_works' => 'Our Work',
+    'contact_us' => 'Contact Us',
+    'contact_text' => 'For inquiries and communication, feel free to contact us directly on WhatsApp.',
+    'whatsapp_now' => 'Chat on WhatsApp',
+    'language' => 'Language',
+    'footer_text' => 'All rights reserved',
+];
