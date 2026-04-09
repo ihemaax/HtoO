@@ -4,12 +4,12 @@
 <section class="page-hero">
     <div class="container">
         <div class="section-head">
-            <div class="section-kicker">{{ app()->getLocale() === 'ar' ? 'سابقة أعمال' : 'Portfolio Showcase' }}</div>
+            <div class="section-kicker">{{ app()->getLocale() === 'ar' ? 'نتيجة التنفيذ' : 'Execution results' }}</div>
             <h1 class="section-title">{{ __('site.our_works') }}</h1>
             <p class="section-text">
                 {{ app()->getLocale() === 'ar'
-                    ? 'نماذج من أسلوبنا في التنفيذ الإعلاني والطباعة عالية الجودة للأنشطة المختلفة.'
-                    : 'A look at our creative execution quality for advertising and print campaigns.' }}
+                    ? 'دي أمثلة لشغل اتنفّذ فعليًا لبراندات مختلفة. هدفنا مش مجرد شكل حلو، هدفنا منتج نهائي يخدم البيع ويشرف اسم العميل.'
+                    : 'These samples showcase real projects for different brands. We focus on final deliverables that support sales, not just attractive visuals.' }}
             </p>
         </div>
 
@@ -20,19 +20,19 @@
                     <h3 style="font-size:24px;margin-bottom:8px;">{{ app()->getLocale() === 'ar' ? $works[0]['title_ar'] : $works[0]['title_en'] }}</h3>
                     <p class="section-text" style="font-size:15px;max-width:unset;">
                         {{ app()->getLocale() === 'ar'
-                            ? 'تطبيق لهوية بصرية متكاملة من حيث الألوان، التكوين، والطباعة النهائية.'
-                            : 'A complete visual identity execution with balanced composition, color harmony, and premium finishing.' }}
+                            ? 'تنفيذ متكامل لهوية البراند على خامات مختلفة، بنفس الروح البصرية وبأعلى مستوى تشطيب.'
+                            : 'A cohesive identity rollout across multiple materials with consistent visuals and premium finishing.' }}
                     </p>
                 </div>
             </article>
 
             <aside class="portfolio-info">
                 <div class="card">
-                    <h3 style="font-size:22px;margin-bottom:10px;">{{ app()->getLocale() === 'ar' ? 'ما الذي يميز أعمالنا؟' : 'What makes our work stand out?' }}</h3>
+                    <h3 style="font-size:22px;margin-bottom:10px;">{{ app()->getLocale() === 'ar' ? 'إيه فرقنا؟' : 'What makes us different?' }}</h3>
                     <div class="contact-list" style="margin:0;">
-                        <div class="contact-item">{{ app()->getLocale() === 'ar' ? 'تناسق بصري يعكس شخصية البراند' : 'Visual consistency aligned with brand personality' }}</div>
-                        <div class="contact-item">{{ app()->getLocale() === 'ar' ? 'تنفيذ نهائي مناسب للاستخدام التجاري' : 'Production-ready execution for real business use' }}</div>
-                        <div class="contact-item">{{ app()->getLocale() === 'ar' ? 'مرونة في التعديلات حسب احتياج العميل' : 'Flexible revision flow based on feedback' }}</div>
+                        <div class="contact-item">{{ app()->getLocale() === 'ar' ? 'نفس جودة التصميم في المنتج النهائي' : 'Design quality preserved in final production' }}</div>
+                        <div class="contact-item">{{ app()->getLocale() === 'ar' ? 'تنفيذ عملي جاهز للاستخدام التجاري فورًا' : 'Commercial-ready output from day one' }}</div>
+                        <div class="contact-item">{{ app()->getLocale() === 'ar' ? 'مرونة محترفة في التعديل قبل الاعتماد' : 'Professional revision flow before approval' }}</div>
                     </div>
                 </div>
 
@@ -40,11 +40,11 @@
                     <div class="mini-work">
                         <img src="{{ $works[0]['image'] }}" alt="Work thumb">
                         <div>
-                            <strong style="display:block;margin-bottom:4px;">{{ app()->getLocale() === 'ar' ? 'مشروع دعائي متكامل' : 'Integrated campaign sample' }}</strong>
-                            <span style="font-size:13px;color:var(--muted);">{{ app()->getLocale() === 'ar' ? 'تصميم + طباعة + إخراج نهائي' : 'Design + print + final delivery' }}</span>
+                            <strong style="display:block;margin-bottom:4px;">{{ app()->getLocale() === 'ar' ? 'باكدج دعاية كامل' : 'Complete advertising package' }}</strong>
+                            <span style="font-size:13px;color:var(--muted);">{{ app()->getLocale() === 'ar' ? 'تصميم + طباعة + توريد وتشطيب' : 'Design + print + supply and finishing' }}</span>
                         </div>
                     </div>
-                    <a href="{{ route('contact') }}" class="btn btn-primary" style="margin-top:14px;">{{ app()->getLocale() === 'ar' ? 'اطلب عرض مشابه' : 'Request a Similar Project' }}</a>
+                    <a href="{{ route('contact') }}" class="btn btn-primary" style="margin-top:14px;">{{ app()->getLocale() === 'ar' ? 'عايز نفس المستوى' : 'I want this level' }}</a>
                 </div>
             </aside>
         </div>
