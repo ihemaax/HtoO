@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -41,7 +41,7 @@
             min-height:100vh;
             overflow-x:hidden;
             color:var(--text);
-            font-family:{{ app()->getLocale() === 'ar' ? "'Alexandria', sans-serif" : "'Outfit', 'Alexandria', sans-serif" }};
+            font-family:{{ app()->getLocale() === 'ar' ? "'Cairo', sans-serif" : "'Manrope', 'Cairo', sans-serif" }};
             background:
                 radial-gradient(circle at 10% 10%, rgba(77,224,255,.16), transparent 28%),
                 radial-gradient(circle at 84% 0%, rgba(125,155,255,.2), transparent 26%),
@@ -83,7 +83,7 @@
             letter-spacing:.4px;
         }
         .section-title{font-size:clamp(30px,4.1vw,50px);line-height:1.1;font-weight:900;letter-spacing:-.8px;margin-bottom:12px}
-        .section-text{max-width:760px;color:var(--muted);font-size:17px;line-height:1.9}
+        .section-text{max-width:760px;color:var(--muted);font-size:17px;line-height:1.85}
 
         .glass{
             background:linear-gradient(165deg, rgba(22,32,58,.84), rgba(12,20,37,.86));
@@ -212,7 +212,7 @@
         .hero-main,.hero-side{border-radius:var(--radius-xl);padding:40px}
         .hero-main-title{font-size:clamp(34px,5.4vw,68px);line-height:1.05;letter-spacing:-1.2px;margin-bottom:16px}
         .hero-main-title span{display:block;background:linear-gradient(120deg,var(--primary-2),#fff,var(--primary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-main-text{font-size:17px;line-height:1.95;color:var(--muted);max-width:710px}
+        .hero-main-text{font-size:17px;line-height:1.85;color:var(--muted);max-width:710px}
         .hero-actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 
         .trust-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
@@ -266,7 +266,7 @@
         .mockup-view.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1}
         .tshirt-preview{width:320px;height:300px}
         .svg-mockup{width:100%;display:block;filter:drop-shadow(0 20px 26px rgba(0,0,0,.32))}
-        .svg-design-text{font-family:{{ app()->getLocale() === 'ar' ? "'Alexandria', sans-serif" : "'Outfit', 'Alexandria', sans-serif" }};font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+        .svg-design-text{font-family:{{ app()->getLocale() === 'ar' ? "'Cairo', sans-serif" : "'Manrope', 'Cairo', sans-serif" }};font-weight:900;letter-spacing:.5px;text-transform:uppercase}
         .mockup-caption{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
 
         @keyframes spin{to{transform:rotate(360deg)}}
