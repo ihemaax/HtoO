@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -41,7 +41,7 @@
             min-height:100vh;
             overflow-x:hidden;
             color:var(--text);
-            font-family:{{ app()->getLocale() === 'ar' ? "'Cairo', sans-serif" : "'Manrope', 'Cairo', sans-serif" }};
+            font-family:{{ app()->getLocale() === 'ar' ? "'Alexandria', sans-serif" : "'Manrope', 'Alexandria', sans-serif" }};
             background:
                 radial-gradient(circle at 10% 10%, rgba(77,224,255,.16), transparent 28%),
                 radial-gradient(circle at 84% 0%, rgba(125,155,255,.2), transparent 26%),
@@ -145,23 +145,6 @@
             pointer-events:none;
         }
 
-        #siteLoader{
-            position:fixed;
-            inset:0;
-            z-index:5000;
-            background:linear-gradient(140deg, #060910 0%, #0c1325 45%, #090f1d 100%);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            transition:opacity .55s ease, visibility .55s ease;
-        }
-        body.loaded #siteLoader{opacity:0;visibility:hidden;pointer-events:none}
-        .loader-card{width:min(420px, 90vw);padding:30px;border-radius:28px;text-align:center;border:1px solid var(--line-strong);background:rgba(17,26,46,.9)}
-        .loader-ring{width:88px;height:88px;border-radius:50%;margin:0 auto 16px;padding:6px;background:conic-gradient(from 0deg,var(--primary),var(--primary-2),var(--primary));animation:spin 1.7s linear infinite}
-        .loader-ring::before{content:"";display:block;width:100%;height:100%;border-radius:50%;background:#0c1528}
-        .loader-title{font-size:24px;font-weight:800;margin-bottom:8px}
-        .loader-text{font-size:14px;line-height:1.8;color:var(--muted)}
-
         .navbar{position:sticky;top:0;z-index:1500;background:rgba(7,12,24,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
         .nav-inner{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:18px}
         .brand{display:flex;align-items:center;gap:12px;min-width:0}
@@ -174,9 +157,11 @@
         .nav-links a.active,.nav-links a:hover{color:var(--text)}
         .nav-links a.active::after,.nav-links a:hover::after{width:100%}
 
-        .nav-actions{display:flex;align-items:center;gap:10px}
-        .lang-btn{min-width:54px;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:800;background:rgba(255,255,255,.03)}
-        .lang-btn.active{background:linear-gradient(120deg, #9fb2ff, #76f0ff);color:var(--dark);border-color:transparent}
+        .nav-actions{display:flex;align-items:center;gap:12px}
+        .lang-switch{display:flex;align-items:center;padding:4px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
+        .lang-btn{min-width:68px;height:36px;padding:0 14px;border-radius:999px;border:1px solid transparent;font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--muted);transition:.2s ease}
+        .lang-btn.active{background:linear-gradient(120deg, #9fb2ff, #76f0ff);color:var(--dark);box-shadow:0 8px 18px rgba(77,224,255,.22)}
+        .lang-btn:not(.active):hover{color:var(--text)}
 
         .menu-toggle{display:none;width:46px;height:46px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);position:relative}
         .menu-toggle span{position:absolute;width:20px;height:2px;border-radius:99px;background:var(--text);transition:.25s ease}
@@ -194,11 +179,15 @@
         .mobile-links a{min-height:48px;border-radius:14px;padding:0 14px;display:flex;align-items:center;background:rgba(255,255,255,.03);font-weight:700}
         .mobile-menu-footer{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
 
-        .footer{padding:44px 0 120px;border-top:1px solid var(--line);color:var(--muted)}
-        .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:20px}
-        .footer h4{font-size:16px;color:var(--text);margin-bottom:10px}
-        .footer p,.footer a{font-size:14px;line-height:1.9;color:var(--muted)}
-        .footer-credit{margin-top:18px;padding-top:12px;border-top:1px solid var(--line)}
+        .footer{padding:70px 0 130px;border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(8,13,24,.58),rgba(6,10,19,.92));color:var(--muted)}
+        .footer-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:22px}
+        .footer-card{padding:26px;border-radius:20px;border:1px solid var(--line);background:linear-gradient(165deg, rgba(19,30,55,.72), rgba(12,19,35,.88))}
+        .footer h4{font-size:18px;color:var(--text);margin-bottom:12px}
+        .footer p,.footer a{font-size:14px;line-height:2;color:var(--muted)}
+        .footer-links{display:grid;gap:6px}
+        .footer-links a:hover{color:var(--primary-2)}
+        .footer-credit{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+        .footer-credit a{color:var(--primary-2);font-weight:700}
 
         .sticky-cta{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:1500;width:min(980px, calc(100% - 20px));display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-radius:20px;background:rgba(11,17,31,.92);border:1px solid var(--line-strong);backdrop-filter:blur(16px);box-shadow:var(--shadow)}
         .sticky-cta-copy strong{display:block;font-size:15px;margin-bottom:3px}
@@ -241,6 +230,7 @@
         .contact-list{display:grid;gap:10px;margin:20px 0}
         .contact-item{padding:14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px}
 
+
         /* Mockup widget */
         .creative-lab{display:grid;grid-template-columns:1fr 1fr;gap:22px}
         .creative-panel{padding:28px;border-radius:26px;background:linear-gradient(165deg, rgba(19,30,55,.9), rgba(12,19,35,.94));border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -266,15 +256,13 @@
         .mockup-view.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1}
         .tshirt-preview{width:320px;height:300px}
         .svg-mockup{width:100%;display:block;filter:drop-shadow(0 20px 26px rgba(0,0,0,.32))}
-        .svg-design-text{font-family:{{ app()->getLocale() === 'ar' ? "'Cairo', sans-serif" : "'Manrope', 'Cairo', sans-serif" }};font-weight:900;letter-spacing:.5px;text-transform:uppercase}
-        .mockup-caption{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
+        .svg-design-text{font-family:{{ app()->getLocale() === 'ar' ? "'Alexandria', sans-serif" : "'Manrope', 'Alexandria', sans-serif" }};font-weight:900;letter-spacing:.5px;text-transform:uppercase}
 
-        @keyframes spin{to{transform:rotate(360deg)}}
         @keyframes sheetPrint{0%{transform:translateX(-50%) translateY(0);opacity:1}45%{transform:translateX(-50%) translateY(95px);opacity:1}100%{transform:translateX(-50%) translateY(130px);opacity:0}}
 
         @media (max-width: 992px){
             .hero-layout,.grid-3,.grid-2,.portfolio-grid,.creative-lab,.contact-grid,.footer-grid{grid-template-columns:1fr}
-            .nav-links,.nav-actions .lang-btn{display:none}
+            .nav-links,.nav-actions .lang-switch{display:none}
             .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
             .hero-main,.hero-side,.page-shell,.contact-card{padding:24px}
             .sticky-cta{flex-direction:column;align-items:stretch}
@@ -299,21 +287,13 @@
 </head>
 <body>
 
-<div id="siteLoader">
-    <div class="loader-card">
-        <div class="loader-ring"></div>
-        <div class="loader-title">{{ app()->getLocale() === 'ar' ? 'جاري تجهيز التجربة' : 'Preparing your experience' }}</div>
-        <div class="loader-text">{{ app()->getLocale() === 'ar' ? 'ثواني بسيطة وننقلك لتجربة بصرية احترافية.' : 'A few moments while we load the premium studio interface.' }}</div>
-    </div>
-</div>
-
 <nav class="navbar">
     <div class="container nav-inner">
         <a href="{{ route('home') }}" class="brand">
             <div class="brand-logo"><img src="{{ $logoUrl }}" alt="H to O Logo"></div>
             <div class="brand-text">
                 <strong>H to O</strong>
-                <span>{{ app()->getLocale() === 'ar' ? 'استوديو الطباعة والهوية البصرية' : 'Printing & Brand Studio' }}</span>
+                <span>{{ app()->getLocale() === 'ar' ? 'حلول طباعة وهوية بصرية للشركات' : 'Printing & branding solutions for businesses' }}</span>
             </div>
         </a>
 
@@ -326,8 +306,10 @@
         </div>
 
         <div class="nav-actions">
-            <a href="{{ route('lang.switch', 'ar') }}" class="lang-btn {{ app()->getLocale() === 'ar' ? 'active' : '' }}">AR</a>
-            <a href="{{ route('lang.switch', 'en') }}" class="lang-btn {{ app()->getLocale() === 'en' ? 'active' : '' }}">EN</a>
+            <div class="lang-switch" aria-label="{{ __('site.language') }}">
+                <a href="{{ route('lang.switch', 'ar') }}" class="lang-btn {{ app()->getLocale() === 'ar' ? 'active' : '' }}">العربية</a>
+                <a href="{{ route('lang.switch', 'en') }}" class="lang-btn {{ app()->getLocale() === 'en' ? 'active' : '' }}">EN</a>
+            </div>
             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open Menu">
                 <span></span><span></span><span></span>
             </button>
@@ -345,7 +327,7 @@
         <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">{{ __('site.contact') }}</a>
     </div>
     <div class="mobile-menu-footer">
-        <a href="{{ route('lang.switch', 'ar') }}" class="lang-btn {{ app()->getLocale() === 'ar' ? 'active' : '' }}">AR</a>
+        <a href="{{ route('lang.switch', 'ar') }}" class="lang-btn {{ app()->getLocale() === 'ar' ? 'active' : '' }}">العربية</a>
         <a href="{{ route('lang.switch', 'en') }}" class="lang-btn {{ app()->getLocale() === 'en' ? 'active' : '' }}">EN</a>
     </div>
 </div>
@@ -354,44 +336,40 @@
 
 <footer class="footer">
     <div class="container footer-grid">
-        <div>
-            <h4>{{ app()->getLocale() === 'ar' ? 'H to O للطباعة والإعلانات' : 'H to O Printing & Advertising' }}</h4>
-            <p>{{ app()->getLocale() === 'ar' ? 'ننفذ حلول طباعة وهوية بصرية وإعلانات بشكل احترافي يخدم مبيعاتك ويقوي حضورك في السوق.' : 'We deliver premium printing, branding, and advertising execution that strengthens your market presence.' }}</p>
+        <div class="footer-card">
+            <h4>{{ app()->getLocale() === 'ar' ? 'H to O | وكالة طباعة ودعاية' : 'H to O | Print & Advertising Agency' }}</h4>
+            <p>{{ app()->getLocale() === 'ar' ? 'شريكك في تصميم وتنفيذ كل تفاصيل البراند: مطبوعات، هدايا دعائية، وتطبيقات هوية بصرية تسيب انطباع قوي من أول نظرة.' : 'Your partner for complete brand execution: print materials, promotional gifts, and visual identity applications built to leave a strong first impression.' }}</p>
             <div class="footer-credit">
                 <p>© {{ date('Y') }} {{ __('site.footer_text') }} - H to O</p>
-                <p>تم إنشاء الموقع بواسطة ihemax</p>
+                <p>{{ app()->getLocale() === 'ar' ? 'تم إنشاء الموقع بواسطة' : 'Website created by' }} <a href="https://www.facebook.com/ibrahim.mahmoud.908164/" target="_blank" rel="noopener">ihemax</a></p>
             </div>
         </div>
-        <div>
-            <h4>{{ app()->getLocale() === 'ar' ? 'روابط مهمة' : 'Quick Links' }}</h4>
-            <p><a href="{{ route('services') }}">{{ __('site.services') }}</a></p>
-            <p><a href="{{ route('portfolio') }}">{{ __('site.portfolio') }}</a></p>
-            <p><a href="{{ route('contact') }}">{{ __('site.contact') }}</a></p>
-        </div>
-        <div>
-            <h4>{{ app()->getLocale() === 'ar' ? 'تواصل مباشر' : 'Direct Contact' }}</h4>
-            <p><a href="https://wa.me/{{ $whatsappNumber }}" target="_blank" rel="noopener">WhatsApp</a></p>
-            <p><a href="https://www.facebook.com/ibrahim.mahmoud.908164/" target="_blank" rel="noopener">Facebook Profile</a></p>
+        <div class="footer-card">
+            <h4>{{ app()->getLocale() === 'ar' ? 'روابط سريعة' : 'Quick Links' }}</h4>
+            <div class="footer-links">
+                <p><a href="{{ route('home') }}">{{ __('site.home') }}</a></p>
+                <p><a href="{{ route('about') }}">{{ __('site.about') }}</a></p>
+                <p><a href="{{ route('services') }}">{{ __('site.services') }}</a></p>
+                <p><a href="{{ route('portfolio') }}">{{ __('site.portfolio') }}</a></p>
+                <p><a href="{{ route('contact') }}">{{ __('site.contact') }}</a></p>
+                <p><a href="https://wa.me/{{ $whatsappNumber }}" target="_blank" rel="noopener">WhatsApp</a></p>
+            </div>
         </div>
     </div>
 </footer>
 
 <div class="sticky-cta">
     <div class="sticky-cta-copy">
-        <strong>{{ app()->getLocale() === 'ar' ? 'جاهز تطور شكل البراند بتاعك؟' : 'Ready to elevate your brand image?' }}</strong>
-        <span>{{ app()->getLocale() === 'ar' ? 'احجز استشارة سريعة وابدأ تنفيذ مطبوعاتك وهوية مشروعك باحتراف.' : 'Book a quick consultation and launch your print & branding assets professionally.' }}</span>
+        <strong>{{ app()->getLocale() === 'ar' ? 'عايز براندك يبان أقوى في السوق؟' : 'Want your brand to stand out stronger?' }}</strong>
+        <span>{{ app()->getLocale() === 'ar' ? 'ابعتلنا الآن وخد خطة تنفيذ واضحة تناسب ميزانيتك.' : 'Message us now and get a clear execution plan tailored to your budget.' }}</span>
     </div>
     <div class="sticky-cta-actions">
-        <a href="{{ route('portfolio') }}" class="btn btn-outline">{{ app()->getLocale() === 'ar' ? 'شاهد الأعمال' : 'View Portfolio' }}</a>
+        <a href="{{ route('portfolio') }}" class="btn btn-outline">{{ app()->getLocale() === 'ar' ? 'شوف شغلنا' : 'See Our Work' }}</a>
         <a href="https://wa.me/{{ $whatsappNumber }}" target="_blank" rel="noopener" class="btn btn-whatsapp">{{ __('site.whatsapp_now') }}</a>
     </div>
 </div>
 
 <script>
-window.addEventListener('load', () => {
-    setTimeout(() => document.body.classList.add('loaded'), 700);
-});
-
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileOverlay = document.getElementById('mobileOverlay');
@@ -414,6 +392,7 @@ menuToggle?.addEventListener('click', () => mobileMenu?.classList.contains('show
 mobileOverlay?.addEventListener('click', closeMenu);
 mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 window.addEventListener('resize', () => { if (window.innerWidth > 992) closeMenu(); });
+
 
 const mockupInput = document.getElementById('mockupNameInput');
 const printBtn = document.getElementById('printMockupBtn');
@@ -475,6 +454,7 @@ if (printBtn && mockupInput && printSheet) {
         setTimeout(() => setActivePreview(activeMockup), 900);
     });
 }
+
 </script>
 
 </body>
