@@ -30,9 +30,6 @@
             --radius-lg:24px;
             --radius-md:16px;
             --container:min(1240px, 92%);
-            --mockup-main:#dae9ff;
-            --mockup-alt:#f9fdff;
-            --mockup-dark:#10213d;
         }
 
         *{box-sizing:border-box;margin:0;padding:0}
@@ -280,7 +277,6 @@
             .btn{width:100%}
             .hero-actions{flex-direction:column;align-items:stretch}
             .trust-list,.stat-row{grid-template-columns:1fr}
-            .mockup-printer-wrap{transform:scale(.88)}
             .sticky-cta{bottom:8px}
         }
     </style>
