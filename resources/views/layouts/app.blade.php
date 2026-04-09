@@ -228,8 +228,37 @@
         .contact-item{padding:14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:14px}
 
 
+        /* Mockup widget */
+        .creative-lab{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+        .creative-panel{padding:28px;border-radius:26px;background:linear-gradient(165deg, rgba(19,30,55,.9), rgba(12,19,35,.94));border:1px solid var(--line);box-shadow:var(--shadow)}
+        .widget-note{color:var(--muted);line-height:1.8;font-size:14px}
+        .mockup-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+        .mockup-tab{min-height:42px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);font:800 12px/1 inherit;cursor:pointer}
+        .mockup-tab.active{background:linear-gradient(120deg, #9fb2ff, #76f0ff);color:var(--dark);border-color:transparent}
+        .creative-form{display:grid;gap:14px;margin-top:18px}
+        .creative-input{min-height:52px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);padding:0 15px;font-size:14px;outline:none}
+        .creative-input:focus{border-color:var(--line-strong)}
+        .color-picker{display:flex;gap:9px;flex-wrap:wrap}
+        .color-chip{width:34px;height:34px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+        .color-chip.active{border-color:#fff;transform:scale(1.06)}
+        .mockup-stage{position:relative;min-height:590px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+        .mockup-printer-wrap{position:relative;width:100%;max-width:500px;height:550px}
+        .mockup-printer{position:absolute;top:0;left:50%;transform:translateX(-50%);width:310px;height:180px;z-index:3}
+        .mockup-printer-head{position:absolute;top:0;left:44px;width:222px;height:80px;border-radius:24px 24px 18px 18px;background:linear-gradient(180deg, #1a3950, #11253a);border:1px solid var(--line)}
+        .mockup-printer-body{position:absolute;top:48px;left:12px;width:286px;height:118px;border-radius:24px;background:linear-gradient(180deg,#13283d,#0c192b);border:1px solid var(--line-strong)}
+        .mockup-printer-slot{position:absolute;left:66px;bottom:22px;width:162px;height:18px;border-radius:999px;background:#050d16}
+        .print-sheet{position:absolute;top:110px;left:50%;transform:translateX(-50%);width:214px;height:132px;border-radius:20px;background:linear-gradient(180deg, #fbffff, #dbf6ff);box-shadow:0 15px 28px rgba(0,0,0,.16);z-index:2}
+        .print-sheet.animate{animation:sheetPrint 2s ease forwards}
+        .mockup-view{position:absolute;left:50%;bottom:8px;transform:translateX(-50%) translateY(20px) scale(.94);opacity:0;transition:.55s;z-index:4;pointer-events:none}
+        .mockup-view.show{transform:translateX(-50%) translateY(0) scale(1);opacity:1}
+        .tshirt-preview{width:320px;height:300px}
+        .svg-mockup{width:100%;display:block;filter:drop-shadow(0 20px 26px rgba(0,0,0,.32))}
+        .svg-design-text{font-family:{{ app()->getLocale() === 'ar' ? "'Alexandria', sans-serif" : "'Manrope', 'Alexandria', sans-serif" }};font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+
+        @keyframes sheetPrint{0%{transform:translateX(-50%) translateY(0);opacity:1}45%{transform:translateX(-50%) translateY(95px);opacity:1}100%{transform:translateX(-50%) translateY(130px);opacity:0}}
+
         @media (max-width: 992px){
-            .hero-layout,.grid-3,.grid-2,.portfolio-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
+            .hero-layout,.grid-3,.grid-2,.portfolio-grid,.creative-lab,.contact-grid,.footer-grid{grid-template-columns:1fr}
             .nav-links,.nav-actions .lang-switch{display:none}
             .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
             .hero-main,.hero-side,.page-shell,.contact-card{padding:24px}
@@ -359,6 +388,68 @@ menuToggle?.addEventListener('click', () => mobileMenu?.classList.contains('show
 mobileOverlay?.addEventListener('click', closeMenu);
 mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
 window.addEventListener('resize', () => { if (window.innerWidth > 992) closeMenu(); });
+
+
+const mockupInput = document.getElementById('mockupNameInput');
+const printBtn = document.getElementById('printMockupBtn');
+const printSheet = document.getElementById('printSheet');
+const mockupTabs = document.querySelectorAll('.mockup-tab');
+const colorChips = document.querySelectorAll('.color-chip');
+
+const previews = {
+    tshirt: document.getElementById('tshirtPreview'),
+    mug: document.getElementById('mugPreview'),
+    card: document.getElementById('businessCardPreview'),
+    pad: document.getElementById('mousePadPreview'),
+};
+const designTargets = {
+    tshirt: document.getElementById('tshirtDesignText'),
+    mug: document.getElementById('mugDesignText'),
+    card: document.getElementById('cardDesignText'),
+    pad: document.getElementById('padDesignText'),
+};
+
+let activeMockup = 'tshirt';
+function setActivePreview(type){
+    Object.values(previews).forEach(el => el?.classList.remove('show'));
+    previews[type]?.classList.add('show');
+}
+function updateDesignText(value){
+    const finalText = value && value.trim() !== '' ? value.trim() : 'H TO O';
+    Object.values(designTargets).forEach(el => { if (el) el.textContent = finalText; });
+}
+function applyMockupColors(main, alt){
+    document.documentElement.style.setProperty('--mockup-main', main);
+    document.documentElement.style.setProperty('--mockup-alt', alt);
+}
+
+mockupTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        mockupTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeMockup = tab.dataset.mockup;
+        setActivePreview(activeMockup);
+    });
+});
+
+colorChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+        colorChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        applyMockupColors(chip.dataset.color, chip.dataset.color2 || chip.dataset.color);
+    });
+});
+
+if (printBtn && mockupInput && printSheet) {
+    printBtn.addEventListener('click', () => {
+        updateDesignText(mockupInput.value);
+        Object.values(previews).forEach(el => el?.classList.remove('show'));
+        printSheet.classList.remove('animate');
+        void printSheet.offsetWidth;
+        printSheet.classList.add('animate');
+        setTimeout(() => setActivePreview(activeMockup), 900);
+    });
+}
 
 </script>
 
